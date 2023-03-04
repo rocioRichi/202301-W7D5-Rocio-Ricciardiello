@@ -11,19 +11,24 @@ const userSchema = new Schema<User>({
     type: String,
     required: true,
   },
-  things: [
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  snapUrl: {
+    type: String,
+    required: true,
+  },
+  relations: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Thing',
+      person: Schema.Types.ObjectId,
+      type: String,
     },
   ],
-  // Add favorites management
-  // favorites: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Thing',
-  //   },
-  // ],
 });
 
 userSchema.set('toJSON', {

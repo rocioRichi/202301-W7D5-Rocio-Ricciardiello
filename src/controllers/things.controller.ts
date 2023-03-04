@@ -46,7 +46,7 @@ export class ThingsController {
       req.body.owner = userId;
       const newThing = await this.repo.create(req.body);
       // Option bidireccional
-      actualUser.things.push(newThing);
+      // actualUser.things.push(newThing);
       this.repoUsers.update(actualUser);
       resp.json({
         results: [newThing],
