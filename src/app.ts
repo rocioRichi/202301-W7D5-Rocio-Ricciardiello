@@ -26,6 +26,8 @@ app.use((_req, _resp, next) => {
 debug({ __dirname });
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+app.use(express.static('public'));
+
 // Modo más organizado de hacerlo
 // Ejemplo para una ruta
 
