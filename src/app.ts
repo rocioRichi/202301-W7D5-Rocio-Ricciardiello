@@ -17,7 +17,6 @@ const corsOptions = {
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors(corsOptions));
-
 app.use((_req, _resp, next) => {
   debug('Soy un middleware');
   next();
@@ -31,7 +30,7 @@ app.use(express.static('public'));
 // Modo más organizado de hacerlo
 // Ejemplo para una ruta
 
-app.use('/things', thingsRouter);
+// app.use('/things', thingsRouter);
 app.use('/users', usersRouter);
 // Modo más simple de hacerlo
 // Ejemplo para la ruta home

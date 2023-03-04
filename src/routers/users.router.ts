@@ -12,10 +12,13 @@ debug('loaded');
 const repo = UsersMongoRepo.getInstance();
 const controller = new UsersController(repo);
 
-usersRouter.get('/', logged, controller.getAll.bind(controller));
+usersRouter.get('/all', logged, controller.getAll.bind(controller));
 usersRouter.post('/register', controller.register.bind(controller));
 usersRouter.post('/login', controller.login.bind(controller));
-// Add favorites management
-// usersRouter.patch('/addfav/:id', controller.addFav.bind(controller));
-// usersRouter.patch('/changefav/:id', controller.changeFav.bind(controller));
-// usersRouter.patch('/deletefav/:id', controller.deleteFav.bind(controller));
+usersRouter.patch(
+  '/change',
+  logged,
+  controller.changeRelations.bind(controller)
+);
+
+// usersRouter.patch('/relationship/:id', controller.update.bind(controller));

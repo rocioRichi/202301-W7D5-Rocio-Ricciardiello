@@ -1,7 +1,7 @@
 import http from 'http';
 import { app } from './app.js';
-import { dbConnect } from './db/db.connetc.js';
 import createDebug from 'debug';
+import { dbConnect } from './db/db.connect.js';
 const debug = createDebug('W6');
 
 const PORT = process.env.PORT || 4500;
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4500;
 const server = http.createServer(app);
 
 dbConnect()
-  .then((mongoose) => {
+  .then((mongoose: { connection: { db: { databaseName: any } } }) => {
     server.listen(PORT);
     debug('DB:', mongoose.connection.db.databaseName);
   })

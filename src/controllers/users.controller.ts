@@ -78,4 +78,15 @@ export class UsersController {
 
     // Send erreor
   }
+  async changeRelations(req: Request, resp: Response, next: NextFunction) {
+    try {
+      debug('changeRelations');
+      const data = await this.repo.update(req.body);
+      resp.json({
+        results: data,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
